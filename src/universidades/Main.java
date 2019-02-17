@@ -8,6 +8,7 @@ package universidades;
 import java.io.File;
 import java.io.*;
 import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
 
@@ -16,7 +17,8 @@ import java.util.Scanner;
  * @author dfeli
  */
 public class Main {
-    public static void main(String[] args) throws FileNotFoundException{
+    public static void main(String[] args) throws FileNotFoundException, ClassNotFoundException{
+        
         Universidad UN= new Universidad("UNAL");
         
         
@@ -26,10 +28,11 @@ public class Main {
             System.out.println("\n");
             System.out.println("¿Que desea hacer?");
             System.out.println("1. Anadir sede");
-            System.out.println("2. Modificar sede");
-            System.out.println("3. Eliminar sede");
-            System.out.println("4. Matricular estudiante");
-            System.out.println("5. Dar informacion sedes y programas");
+            System.out.println("2. Eliminar sede");
+            System.out.println("3. Matricular estudiante");
+            System.out.println("4. Añadir programas");
+            System.out.println("5. Listar sedes");
+            System.out.println("6. Salir");
             try{
             
             b=a.nextInt();
@@ -113,25 +116,95 @@ public class Main {
                     }while(d!=0);
                 }
                 }while(c>3||c<1);
-            }else if(b==2){
+                b=7;
+            }
+            
+            
+            if(b==4){
                 String nombre=null;
-                System.out.println("Ingrese nombre de la sede que quiere modificar: ");
-                nombre = a.nextLine();
+                System.out.println("Ingrese nombre de la sede a la que quiere añadir un programa: ");
+                nombre = a.next();
                 for (Iterator<Sede> it = UN.sedes.iterator(); it.hasNext();) {
                     Sede h = it.next();
                     if(h.nombre.equals(nombre)){
-                        System.out.println(h.darInformacion());
-                        System.out.println("¿Qué desea modificar?");
+                        if(h instanceof Tecnologico){
+                            System.out.println("Ingrese el nombre del programa: ");
+                            String prog = a.next();
+                            System.out.println("Ingrese descripcion del programa en una palabra: ");
+                            String descrip = a.nextLine();
+                            descrip = a.nextLine();
+                        ((Tecnologico)h).getProFormacion().add(new ProgramaDeFormacion(prog,descrip));
+                        }else if(h instanceof EducacionContinua){
+                            System.out.println("Ingrese el nombre del programa: ");
+                            String prog = a.next();
+                            System.out.println("Ingrese descripcion del programa: ");
+                            String descrip = a.nextLine();
+                            descrip = a.nextLine();
+                            ((EducacionContinua)h).getProgramas().add(new ProgramasEcontinua(prog,descrip));
+                        }else if(h instanceof Profesional){
+                            
+                            System.out.println("1. Programa profesional");
+                            System.out.println("2. Programa tecnologico");
+                            System.out.println("3. Programa educacion continua");
+                            int p=a.nextInt();
+                            if(p==1){
+                            System.out.println("Ingrese el nombre del programa: ");
+                            String prog = a.next();
+                            System.out.println("Ingrese descripcion del programa: ");
+                            String descrip = a.nextLine();
+                            descrip = a.nextLine();
+                            ((Profesional)h).getProFormacion().add(new ProgramaDeFormacion(prog,descrip));
+                            }
+                            if(p==2){
+                            System.out.println("Ingrese el nombre del programa: ");
+                            String prog = a.next();
+                            System.out.println("Ingrese descripcion del programa: ");
+                            String descrip = a.nextLine();
+                            descrip = a.nextLine();
+                            ((Profesional)h).getProTecnicos().add(new ProgramaDeFormacion(prog,descrip));
+                            }
+                            if(p==3){
+                            System.out.println("Ingrese el nombre del programa: ");
+                            String prog = a.next();
+                            System.out.println("Ingrese descripcion del programa: ");
+                            String descrip = a.nextLine();
+                            descrip = a.nextLine();
+                            ((Profesional)h).getProContinua().add(new ProgramasEcontinua(prog,descrip));
+                            }
+                        }
                     }
                 }
+                b=7;
+            }
+            if(b==5){
+                
+            UN.ListarSedes();
+            b=7;
+            }
+            if(b==6){
+                System.out.println("Salir");
+                b=6;
             }
             }catch(Exception e){
+                e.printStackTrace();
                 System.out.println("No escribio un valor correcto");
             }finally{
                 System.out.println("Proceso terminado");
-                b=5;
+                
+                
             }
-        }while(b>4||b<1);
+        }while(b>6||b<1);
+        try{
+            ObjectOutputStream escribir= new ObjectOutputStream(new FileOutputStream(new File("Sedes/Guardado.txt")));
+            escribir.writeObject(UN);
+            escribir.close();
+            ObjectInputStream recuperar= new ObjectInputStream(new FileInputStream(new File("Sedes/Guardado.txt")));
+            Universidad UN2 = (Universidad)recuperar.readObject();
+            recuperar.close();
+            }catch(Exception e){
+            e.printStackTrace();
+            
+        }
     }
             
             
