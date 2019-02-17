@@ -29,6 +29,7 @@ public class Main {
             System.out.println("2. Modificar sede");
             System.out.println("3. Eliminar sede");
             System.out.println("4. Matricular estudiante");
+            System.out.println("5. Dar informacion sedes y programas");
             try{
             
             b=a.nextInt();
