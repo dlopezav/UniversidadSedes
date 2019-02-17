@@ -13,8 +13,8 @@ import java.util.ArrayList;
  */
 public class Profesional extends Sede{
     private int progAltaCalidad;
-    private ArrayList<EducacionContinua> EC;
-
+    private ArrayList<ProgramaDeFormacion> proFormacion;
+    private ArrayList<ProgramasEcontinua> proContinua;
     @Override
     public String darInformacion() {
         return "Programas de alta calidad: " + this.progAltaCalidad;           
@@ -23,7 +23,7 @@ public class Profesional extends Sede{
     public Profesional(int progAltaCalidad, String nombre, String direccion, int telefono, double AreaConstruida) {
         super(nombre, direccion, telefono, AreaConstruida);
         this.progAltaCalidad = progAltaCalidad;
-        this.EC = new ArrayList<>();
+        this.proFormacion = new ArrayList<>();
     }
 
     public int getProgAltaCalidad() {
@@ -34,13 +34,7 @@ public class Profesional extends Sede{
         this.progAltaCalidad = progAltaCalidad;
     }
 
-    public ArrayList<EducacionContinua> getEC() {
-        return EC;
-    }
-
-    public void setEC(ArrayList<EducacionContinua> EC) {
-        this.EC = EC;
-    }
+    
 
     public String getNombre() {
         return nombre;
@@ -73,6 +67,8 @@ public class Profesional extends Sede{
     public void setAreaConstruida(double AreaConstruida) {
         this.AreaConstruida = AreaConstruida;
     }
+
+    
     
     
     

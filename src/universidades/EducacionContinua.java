@@ -5,12 +5,15 @@
  */
 package universidades;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author dfeli
  */
 public class EducacionContinua extends Sede{
     private String CursoPopular; 
+    private ArrayList<ProgramasEcontinua> programas;
 
     public EducacionContinua(String nombre, String direccion, int telefono, double AreaConstruida) {
         super(nombre, direccion, telefono, AreaConstruida);
@@ -60,6 +63,8 @@ public class EducacionContinua extends Sede{
     public void setAreaConstruida(double AreaConstruida) {
         this.AreaConstruida = AreaConstruida;
     }
+
+   
 
     
 

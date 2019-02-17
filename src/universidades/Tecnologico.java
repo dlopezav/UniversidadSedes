@@ -5,22 +5,35 @@
  */
 package universidades;
 
+import java.io.File;
+import java.util.ArrayList;
+
 /**
  *
  * @author dfeli
  */
 public class Tecnologico extends Sede {
     private int estudiantes;
+    private ArrayList<ProgramaDeFormacion> proFormacion;
+    
     
     @Override
     public String darInformacion() {
-        return "Total estudiantes: " + estudiantes;
-                
+        String x="Nombre sede: ";
+        x+=nombre+"\n Direccion: ";
+        x+=direccion+"\n Telefono: ";
+        x+=telefono+"\n";
+        x+="Programas: ";
+        for(ProgramaDeFormacion a: proFormacion){
+            x+="\n"+a.getNombre()+". Descripcion: "+a.getDescripcion();
+        }
+        return x;
     }
 
     public Tecnologico(String nombre, String direccion, int telefono, double AreaConstruida, int estudiantes) {
         super(nombre, direccion, telefono, AreaConstruida);
         this.estudiantes = estudiantes;
+        this.programas= new ArrayList<>();
     }
 
     public int getEstudiantes() {
@@ -62,6 +75,11 @@ public class Tecnologico extends Sede {
     public void setAreaConstruida(double AreaConstruida) {
         this.AreaConstruida = AreaConstruida;
     }
+
+    
+   
+
+    
     
     
 }

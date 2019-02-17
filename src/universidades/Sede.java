@@ -5,6 +5,9 @@
  */
 package universidades;
 
+import java.io.File;
+import java.util.ArrayList;
+
 /**
  *
  * @author dfeli
@@ -14,8 +17,9 @@ public abstract class Sede {
     protected String direccion;
     protected int telefono;
     protected double AreaConstruida;
+    protected ArrayList<String> programas;
     
-    public abstract String darInformacion();    
+    protected abstract String darInformacion(); 
 
     public Sede(String nombre, String direccion, int telefono, double AreaConstruida) {
         this.nombre = nombre;
