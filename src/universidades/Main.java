@@ -34,11 +34,12 @@ public class Main {
             System.out.println("\n");
             System.out.println("¿Que desea hacer?");
             System.out.println("1. Anadir sede");
-            System.out.println("2. Eliminar sede");
-            System.out.println("3. Matricular estudiante");
-            System.out.println("4. Anadir programas a sede");
-            System.out.println("5. Listar sedes");
-            System.out.println("6. Salir");
+            System.out.println("2. Consultar sede");
+            System.out.println("3. Eliminar sede");
+            System.out.println("4. Matricular estudiante");
+            System.out.println("5. Anadir programas a sede");
+            System.out.println("6. Listar sedes");
+            System.out.println("7. Salir");
             try{
             
             b=a.nextInt();
@@ -124,9 +125,22 @@ public class Main {
                     }while(d!=0);
                 }
                 }while(c>3||c<1);
-                b=7;
+                b=8;
             }
             if(b==2){
+                String nombre=null;
+                System.out.println("Ingrese nombre de la sede que quiere consultar: ");
+                nombre = a.nextLine();
+                nombre = a.nextLine();
+                for (Iterator<Sede> it = UN.sedes.iterator(); it.hasNext();) {
+                    Sede k = it.next();
+                    if(k.nombre.equals(nombre)){
+                        System.out.println(k.darInformacion());
+                    }
+                }
+                   b=8;
+             }
+            if(b==3){
                 String nombre=null;
                 System.out.println("Ingrese nombre de la sede a la que quiere eliminar: ");
                 nombre = a.nextLine();
@@ -137,9 +151,9 @@ public class Main {
                         UN.sedes.remove(k);
                     }
                 }
-                   
+                   b=8;
              }
-            if(b==4){
+            if(b==5){
                 String nombre=null;
                 System.out.println("Ingrese nombre de la sede a la que quiere añadir un programa: ");
                 nombre = a.nextLine();
@@ -196,16 +210,16 @@ public class Main {
                         
                     }
                 }
-                b=7;
-            }
-            if(b==5){
-            output.print(UN.ListarSedes());
-            b=7;
+                b=8;
             }
             if(b==6){
+            output.print(UN.ListarSedes());
+            b=8;
+            }
+            if(b==7){
                 System.out.println("Salir");
                 UN.ListarSedes();
-                b=6;
+                b=7;
             }
             }catch(Exception e){
                 System.out.println("No escribio un valor correcto");
@@ -215,7 +229,7 @@ public class Main {
                 
                 Guardar(UN);
             }
-        }while(b>6||b<1);
+        }while(b>7||b<1);
         Guardar(UN);
     }
 
