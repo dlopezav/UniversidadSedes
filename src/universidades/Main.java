@@ -14,7 +14,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author dfeli
+ * @author Diego Felipe López Avila
  */
 public class Main {
     public static void main(String[] args) throws FileNotFoundException, ClassNotFoundException, IOException{
@@ -223,7 +223,6 @@ public class Main {
             }
             }catch(Exception e){
                 System.out.println("No escribio un valor correcto");
-                e.printStackTrace();
             }finally{
                 System.out.println("Proceso terminado");
                 
