@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author dfeli
+ * @author Diego Felipe López Avila
  */
 public class Profesional extends Sede implements Serializable{
     private int progAltaCalidad;
@@ -26,15 +26,15 @@ public class Profesional extends Sede implements Serializable{
     public String darInformacion() {
        String x= "\n"+nombre+" "+telefono+" "+direccion+"\n"+progAltaCalidad+"\n"+"Programas profesionales: ";
         for(ProgramaDeFormacion a: proFormacion){
-            x+=a.getNombre()+": "+a.getDescripcion()+" ";
+            x+=a.getNombre()+": "+a.getDescripcion()+", ";
         }
-        x+="\nProgramas tecnicos: ";
+        x+="\nProgramas tecnnologicos: ";
         for(ProgramaDeFormacion a: proTecnicos){
-            x+=a.getNombre()+": "+a.getDescripcion()+" ";
+            x+=a.getNombre()+": "+a.getDescripcion()+", ";
         }
-        x+="\nProgramas de educacion continua";
+        x+="\nProgramas de educacion continua:";
         for(ProgramasEcontinua a: proContinua){
-            x+=a.getNombre()+": "+a.getDescripcion()+" ";
+            x+=a.getNombre()+": "+a.getDescripcion()+", ";
         }
         return x;
     }

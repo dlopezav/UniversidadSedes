@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author dfeli
+ * @author Diego Felipe López Avila
  */
 public class Universidad implements Serializable{
 
@@ -54,13 +54,13 @@ public class Universidad implements Serializable{
         String x="";
        for(Sede r: sedes){
            if(r instanceof Tecnologico){
-               x+="\nTecnologico: "+((Tecnologico)r).darInformacion();
+               x+="\n\nTecnologico: "+((Tecnologico)r).darInformacion();
            }
            if(r instanceof Profesional){
-               x+="\nProfesional: "+((Profesional)r).darInformacion();
+               x+="\n\nProfesional: "+((Profesional)r).darInformacion();
            }
            if(r instanceof EducacionContinua){
-               x+="\nEducacion continua: "+((EducacionContinua)r).darInformacion();
+               x+="\n\nEducacion continua: "+((EducacionContinua)r).darInformacion();
            }
        }
        return x;

@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author dfeli
+ * @author Diego Felipe López Avila
  */
 public class Tecnologico extends Sede implements Serializable{
     private int estudiantes;

@@ -11,13 +11,14 @@ import java.util.ArrayList;
 
 /**
  *
- * @author dfeli
+ * @author Diego Felipe López Avila
  */
 public abstract class Sede implements Serializable{
     protected String nombre;
     protected String direccion;
     protected int telefono;
     protected double AreaConstruida;
+    protected ArrayList<Estudiante> estudiante;
     
     protected abstract String darInformacion(); 
 
