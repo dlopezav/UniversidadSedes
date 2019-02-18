@@ -26,8 +26,8 @@ public class Main {
             ObjectInputStream recibir= new ObjectInputStream(new FileInputStream(new File("Sedes/Guardado.txt")));
             UN = (Universidad)recibir.readObject();
             recibir.close();
+        }else{
         }
-        output.print(UN.ListarSedes());
         int b=0;
         do{
             Scanner a= new Scanner(System.in);
@@ -51,6 +51,7 @@ public class Main {
                 System.out.println("1. Tecnologica");
                 System.out.println("2. Profesional");
                 System.out.println("3. Educacion continua");
+                Guardar(UN);
                 c=a.nextInt();
                 if(c==1){
                     int d=0;
@@ -128,8 +129,10 @@ public class Main {
             if(b==2){
                 String nombre=null;
                 System.out.println("Ingrese nombre de la sede a la que quiere eliminar: ");
-                nombre = a.next();
-                for(Sede k: UN.sedes){
+                nombre = a.nextLine();
+                nombre = a.nextLine();
+                for (Iterator<Sede> it = UN.sedes.iterator(); it.hasNext();) {
+                    Sede k = it.next();
                     if(k.nombre.equals(nombre)){
                         UN.sedes.remove(k);
                     }
@@ -139,7 +142,8 @@ public class Main {
             if(b==4){
                 String nombre=null;
                 System.out.println("Ingrese nombre de la sede a la que quiere añadir un programa: ");
-                nombre = a.next();
+                nombre = a.nextLine();
+                nombre = a.nextLine();
                 for (Iterator<Sede> it = UN.sedes.iterator(); it.hasNext();) {
                     Sede h = it.next();
                     if(h.nombre.equals(nombre)){
@@ -204,12 +208,12 @@ public class Main {
                 b=6;
             }
             }catch(Exception e){
-                e.printStackTrace();
                 System.out.println("No escribio un valor correcto");
+                e.printStackTrace();
             }finally{
                 System.out.println("Proceso terminado");
                 
-                
+                Guardar(UN);
             }
         }while(b>6||b<1);
         Guardar(UN);
@@ -221,7 +225,19 @@ public class Main {
             escribir.close();
     }
 
+    /*
+    FORMATO
+    Para almacenar permanentemente la información, se utilizó la clase ObjectOutputStream y ObjectInputStream, gracias
+    a esto, es posible mantener el objeto Universidad con la información que ya tenía previamente en el archivo "Sedes/Guardado.txt"
+    . En el archivo 
+    "Sedes/ListaCompleta.txt" se encuentran las sedes con:
+    - Tipo
+    - Nombre Teléfono Direccion Estudiantes(Tecnologicas) CursoPopular(EducacionContinua) ProgramasdeAltaCalidad(Profesional)
+    - Programas (para las sedes profesionales son 3 lineas de programas segun tipo)
     
+
+
+*/
  
     
     
