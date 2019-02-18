@@ -1,17 +1,17 @@
 
+
 Tecnologico: 
-1 1 1
-Estudiantes: 1
-Programas: eadead: dsfesa, 
-Tecnologico: 
-1 1 1
-Estudiantes: 1
-Programas: adawd: aefea, 
-Tecnologico: 
-1 1 1
-Estudiantes: 1
-Programas: eadead: dsfesa, 
-Tecnologico: 
-1 1 1
-Estudiantes: 1
-Programas: adawd: aefea, 
+Galerias 3123212 Cll 53 #26 75
+Estudiantes: 12
+Programas: Sistemas: Computacion y desarrollo, 
+
+Profesional: 
+�lamos 2345621 Cll 74 94 78
+32
+Programas profesionales: 
+Programas tecnnologicos: Telecomunicaciones: Comunicar, 
+Programas de educacion continua:Ciencias: IA, 
+
+Educacion continua: 
+Martires 9873487 Cll 2 33 25
+Curso popular: null
