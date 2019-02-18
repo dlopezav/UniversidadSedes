@@ -6,18 +6,18 @@
 package universidades;
 
 import java.io.File;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author dfeli
  */
-public abstract class Sede {
+public abstract class Sede implements Serializable{
     protected String nombre;
     protected String direccion;
     protected int telefono;
     protected double AreaConstruida;
-    protected ArrayList<String> programas;
     
     protected abstract String darInformacion(); 
 

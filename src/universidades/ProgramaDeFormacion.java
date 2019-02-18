@@ -5,11 +5,13 @@
  */
 package universidades;
 
+import java.io.Serializable;
+
 /**
  *
  * @author dfeli
  */
-public class ProgramaDeFormacion {
+public class ProgramaDeFormacion implements Serializable {
     private String nombre;
     private String descripcion;
 
@@ -26,6 +28,11 @@ public class ProgramaDeFormacion {
     }
 
     public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public ProgramaDeFormacion(String nombre, String descripcion) {
+        this.nombre = nombre;
         this.descripcion = descripcion;
     }
     

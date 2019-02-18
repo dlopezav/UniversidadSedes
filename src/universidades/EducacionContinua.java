@@ -5,25 +5,36 @@
  */
 package universidades;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author dfeli
  */
-public class EducacionContinua extends Sede{
+public class EducacionContinua extends Sede implements Serializable{
     private String CursoPopular; 
     private ArrayList<ProgramasEcontinua> programas;
+    
 
     public EducacionContinua(String nombre, String direccion, int telefono, double AreaConstruida) {
         super(nombre, direccion, telefono, AreaConstruida);
         this.CursoPopular = CursoPopular;
+        this.programas = new ArrayList<>();
+        
     }
-
     @Override
-    public String darInformacion() {
-        return "Curso popular: "+ this.CursoPopular;
+    protected String darInformacion() {
+        String x="\n"+nombre+" "+telefono+" "+direccion+"\nCurso popular: "+CursoPopular+"\n";
+        for(ProgramasEcontinua a: programas){
+            x+=a.getNombre()+": "+a.getDescripcion()+", ";
+        }
+        return x;
     }
+    
     public String getCursoPopular() {
         return CursoPopular;
     }
@@ -63,6 +74,16 @@ public class EducacionContinua extends Sede{
     public void setAreaConstruida(double AreaConstruida) {
         this.AreaConstruida = AreaConstruida;
     }
+
+    public ArrayList<ProgramasEcontinua> getProgramas() {
+        return programas;
+    }
+
+    public void setProgramas(ArrayList<ProgramasEcontinua> programas) {
+        this.programas = programas;
+    }
+
+    
 
    
 

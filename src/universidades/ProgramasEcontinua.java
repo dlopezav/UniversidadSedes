@@ -5,14 +5,22 @@
  */
 package universidades;
 
+import java.io.Serializable;
+
 /**
  *
  * @author dfeli
  */
-public class ProgramasEcontinua {
+public class ProgramasEcontinua implements Serializable {
     private String nombre;
     private String descripcion;
 
+    public ProgramasEcontinua(String nombre, String descripcion) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+    }
+
+    
     public String getNombre() {
         return nombre;
     }

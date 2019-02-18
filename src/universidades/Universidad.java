@@ -5,61 +5,67 @@
  */
 package universidades;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintStream;
+
+import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author dfeli
  */
-public class Universidad {
+public class Universidad implements Serializable{
 
-   private String nombre;
-   public ArrayList<Sede> sedes;
-   private File Profesional;
-   private File Tecnologico;
-   private File EducacionContinua;
-   private PrintStream outputT;
-   private PrintStream outputE;
-   private PrintStream outputP;
-
-    public Universidad(String nombre) throws FileNotFoundException {
+    
+    private String nombre;
+    public ArrayList<Sede> sedes;
+    
+    
+    public Universidad(String nombre) {
+        this.nombre=nombre;
         this.sedes = new ArrayList<>();
-        this.Tecnologico = new File("Sedes/Tecnologicos.txt");
-        this.EducacionContinua = new File("Sedes/EducacionContinua.txt");
-        this.Profesional = new File("Sedes/Profesional.txt");
-        this.outputE= new PrintStream(EducacionContinua);
-        this.outputP= new PrintStream(Profesional);
-        this.outputT= new PrintStream(Tecnologico);
+        
     }
+    
    
-   public void añadirTecnologico(String nombre, String direccion, int telefono, double AreaConstruida, int estudiantes){
+    public void añadirTecnologico(String nombre, String direccion, int telefono, double AreaConstruida, int estudiantes) {
        Sede a= new Tecnologico(nombre,direccion,telefono,AreaConstruida,estudiantes);
        sedes.add(a);
-       outputT.print("\n"+nombre +" " +telefono +" "+ AreaConstruida+ " "+estudiantes);
    }
-   public void añadirProfesional(int progAltaCalidad, String nombre, String direccion, int telefono, double AreaConstruida){
+   public void añadirProfesional(int progAltaCalidad, String nombre, String direccion, int telefono, double AreaConstruida) {
        Sede b= new Profesional(progAltaCalidad, nombre, direccion, telefono, AreaConstruida);
        sedes.add(b);
-       
-       outputP.print("\n"+nombre + " " + telefono +" "+ AreaConstruida+ " "+progAltaCalidad);
    }
-    public void añadirEdContinua(String nombre, String direccion, int telefono, double AreaConstruida){
+    public void añadirEdContinua(String nombre, String direccion, int telefono, double AreaConstruida) {
        Sede c= new EducacionContinua(nombre, direccion, telefono, AreaConstruida);
        sedes.add(c);
-       outputE.print(" "+ nombre + " " +direccion+" " +telefono +" "+ AreaConstruida);
    }
-    public void eliminarSede(String nombre){
+    public void eliminarSede(String nombre) throws IOException{
         for(Sede e: sedes){
             if(e.nombre.equals(nombre)){
                 sedes.remove(e);
             }
         }
     }
+    
+    public String ListarSedes() {
+        String x="";
+       for(Sede r: sedes){
+           if(r instanceof Tecnologico){
+               x+="\nTecnologico: "+((Tecnologico)r).darInformacion();
+           }
+           if(r instanceof Profesional){
+               x+="\nProfesional: "+((Profesional)r).darInformacion();
+           }
+           if(r instanceof EducacionContinua){
+               x+="\nEducacion continua: "+((EducacionContinua)r).darInformacion();
+           }
+       }
+       return x;
+    }
+    
+    }
+    
 
-    
-    
-}

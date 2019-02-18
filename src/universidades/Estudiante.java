@@ -5,11 +5,13 @@
  */
 package universidades;
 
+import java.io.Serializable;
+
 /**
  *
  * @author dfeli
  */
-public class Estudiante extends Persona{
+public class Estudiante extends Persona implements Serializable{
     private Sede sede;
     private String ProgramaFormacion;
     public Estudiante(String nombre, Boolean titulo, String colegio, String AñoGrado) {

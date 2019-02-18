@@ -5,11 +5,13 @@
  */
 package universidades;
 
+import java.io.Serializable;
+
 /**
  *
  * @author dfeli
  */
-public class Persona {
+public class Persona implements Serializable {
     protected String nombre;
     protected Boolean titulo;
     protected String colegio;

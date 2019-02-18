@@ -6,26 +6,29 @@
 package universidades;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author dfeli
  */
-public class Tecnologico extends Sede {
+public class Tecnologico extends Sede implements Serializable{
     private int estudiantes;
     private ArrayList<ProgramaDeFormacion> proFormacion;
     
     
     @Override
     public String darInformacion() {
-        String x="Nombre sede: ";
-        x+=nombre+"\n Direccion: ";
-        x+=direccion+"\n Telefono: ";
-        x+=telefono+"\n";
-        x+="Programas: ";
+        String x= "\n"+nombre+" "+telefono+" "+direccion+"\nEstudiantes: "+estudiantes+"\n"+"Programas: ";
+        
         for(ProgramaDeFormacion a: proFormacion){
-            x+="\n"+a.getNombre()+". Descripcion: "+a.getDescripcion();
+            x+=a.getNombre()+": "+a.getDescripcion()+", ";
         }
         return x;
     }
@@ -33,7 +36,7 @@ public class Tecnologico extends Sede {
     public Tecnologico(String nombre, String direccion, int telefono, double AreaConstruida, int estudiantes) {
         super(nombre, direccion, telefono, AreaConstruida);
         this.estudiantes = estudiantes;
-        this.programas= new ArrayList<>();
+        this.proFormacion = new ArrayList<>();
     }
 
     public int getEstudiantes() {
@@ -74,6 +77,14 @@ public class Tecnologico extends Sede {
 
     public void setAreaConstruida(double AreaConstruida) {
         this.AreaConstruida = AreaConstruida;
+    }
+
+    public ArrayList<ProgramaDeFormacion> getProFormacion() {
+        return proFormacion;
+    }
+
+    public void setProFormacion(ArrayList<ProgramaDeFormacion> proFormacion) {
+        this.proFormacion = proFormacion;
     }
 
     
